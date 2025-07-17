@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>访问验证</title>
+</head>
+<body>
+  <p>正在验证访问权限，请稍候...</p>
+  <script>
+    // 访问入口页，设置 Cookie 然后跳转首页
+    document.cookie = "allow=yes; path=/; max-age=7200";
+    window.location.href = "/";
+  </script>
+</body>
+</html>
