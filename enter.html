@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <title>访问验证</title>
-</head>
-<body>
-  <p>正在验证访问权限，请稍候...</p>
-  <script>
-    // 访问入口页，设置 Cookie 然后跳转首页
-    document.cookie = "allow=yes; path=/; max-age=7200";
-    window.location.href = "/";
-  </script>
-</body>
-</html>
+<script>
+  const allowedReferrers = [
+    "https://tc.nb66y.dpdns.org",
+    "https://nb66y.dpdns.org",
+    "https://nby.rf.gd"
+  ];
+  const referer = document.referrer || "";
+
+  if (allowedReferrers.some(r => referer.startsWith(r))) {
+    document.cookie = "allow=yes; path=/; max-age=7200"; // 有效期2小时
+    window.location.href = "/"; // 跳转回首页
+  } else {
+    document.body.innerHTML = "非法来源，请通过指定入口访问";
+  }
+</script>
